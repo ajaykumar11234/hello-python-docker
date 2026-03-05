@@ -1,0 +1,101 @@
+# Hello Python Docker App
+
+A simple **Python Hello World application** containerized using **Docker** and published to **GitHub Container Registry (GHCR)**.
+
+## 📌 Project Overview
+
+This project demonstrates how to:
+
+* Create a simple Python application
+* Containerize the application using Docker
+* Push the Docker image to GitHub Container Registry (GHCR)
+* Pull and run the container from GHCR
+
+## 🛠 Technologies Used
+
+* Python
+* Docker
+* GitHub Container Registry (GHCR)
+
+## 📂 Project Structure
+
+```
+hello-python
+│
+├── app.py
+├── Dockerfile
+└── README.md
+```
+
+## 🐍 Python Application
+
+`app.py`
+
+```python
+print("Hello from Python Docker container!")
+```
+
+## 🐳 Dockerfile
+
+```Dockerfile
+FROM python:3.10-slim
+
+WORKDIR /app
+
+COPY app.py .
+
+CMD ["python", "app.py"]
+```
+
+## ⚙️ Build Docker Image
+
+```
+docker build -t hello-python .
+```
+
+## 🔗 Tag Image for GHCR
+
+```
+docker tag hello-python ghcr.io/ajaykumar11234/hello-python:latest
+```
+
+## 📤 Push Image to GHCR
+
+```
+docker push ghcr.io/ajaykumar11234/hello-python:latest
+```
+
+## 📥 Pull Image from GHCR
+
+```
+docker pull ghcr.io/ajaykumar11234/hello-python:latest
+```
+
+## ▶️ Run Container
+
+```
+docker run ghcr.io/ajaykumar11234/hello-python:latest
+```
+
+## 📦 Container Registry
+
+Image available at:
+
+```
+ghcr.io/ajaykumar11234/hello-python
+```
+
+## 🎯 Purpose of This Project
+
+This project was created to understand:
+
+* Docker image creation
+* Container registries
+* GitHub Packages (GHCR)
+* Container deployment workflow
+
+## 👨‍💻 Author
+
+Ajay Kumar
+B.Tech CSE
+Keshav Memorial Institute of Technology
