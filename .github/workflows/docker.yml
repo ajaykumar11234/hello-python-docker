@@ -1,4 +1,4 @@
-name: GHCR Login Test
+name: Docker Build and Push
 
 on:
   push:
@@ -6,13 +6,22 @@ on:
       - main
 
 jobs:
-  login:
+  docker:
     runs-on: ubuntu-latest
 
     permissions:
-      packages: write
       contents: read
+      packages: write
 
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
       - name: Login to GHCR
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build Docker Image
+        run: docker build -t ghcr.io/${{ github.repository_owner }}/hello-python:latest .
+
+      - name: Push Docker Image
+        run: docker push ghcr.io/${{ github.repository_owner }}/hello-python:latest
